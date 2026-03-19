@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Do List</title>
+  <link rel="icon" type="image/png" href="IMG/logo.png">
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div>
+        <h1 class="logo">To do List</h1>
+        <button id="themeToggle" class="theme-btn">🌙 Modo oscuro</button>
+      </div>
+
+      <div class="sidebar-group">
+        <button class="menu-btn" data-view="all">Todo</button>
+        <button class="menu-btn active" data-view="today">Hoy</button>
+        <button class="menu-btn" data-view="upcoming">Próximos días</button>
+        <button class="menu-btn" data-view="important">Importante</button>
+      </div>
+
+      <div class="sidebar-group">
+        <p class="sidebar-title">Sección</p>
+        <button class="section-btn active" data-section="all">Todas</button>
+        <button class="section-btn" data-section="Escuela">Escuela</button>
+        <button class="section-btn" data-section="Trabajo">Trabajo</button>
+        <button class="section-btn" data-section="Casa">Casa</button>
+        <button class="section-btn" data-section="Personal">Personal</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h2 id="viewTitle">Hoy</h2>
+          <p id="dateLabel" class="date-label"></p>
+        </div>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="pending">Pendientes</button>
+          <button class="filter-btn" data-filter="completed">Completadas</button>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="card-header">
+          <h3>Mis tareas</h3>
+          <button id="openModalBtn" class="add-btn">Agregar +</button>
+        </div>
+
+        <ul id="taskList" class="task-list"></ul>
+
+        <div class="card-footer">
+          <span id="taskCounter">0 pendientes</span>
+          <button id="clearCompletedBtn" class="clear-btn">Limpiar completadas</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Agregar tarea</h3>
+        <button id="closeModalBtn" class="close-btn">✕</button>
+      </div>
+
+      <form id="taskForm" class="task-form">
+        <input type="hidden" id="taskId" />
+
+        <label>
+          ¿Qué tienes que hacer?
+          <input type="text" id="taskInput" placeholder="Escribe tu tarea" maxlength="120" required />
+        </label>
+
+        <label>
+          Sección
+          <select id="taskSection">
+            <option value="Escuela">Escuela</option>
+            <option value="Trabajo">Trabajo</option>
+            <option value="Casa">Casa</option>
+            <option value="Personal">Personal</option>
+          </select>
+        </label>
+
+        <label class="checkbox-row">
+          <input type="checkbox" id="taskImportant" />
+          ¿Es muy importante?
+        </label>
+
+        <label>
+          Fecha
+          <select id="dateOption">
+            <option value="today">Hoy</option>
+            <option value="custom">Programar fecha</option>
+          </select>
+        </label>
+
+        <label id="customDateContainer" class="hidden">
+          Programar fecha
+          <input type="date" id="taskDate" />
+        </label>
+
+        <div class="modal-actions">
+          <button type="button" id="cancelBtn" class="secondary-btn">Cancelar</button>
+          <button type="submit" class="primary-btn">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
